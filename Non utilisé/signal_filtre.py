@@ -50,7 +50,6 @@ bruit = np.random.normal(0, 0.2, 1001)
 plt.plot(x, bruit, linewidth=0.5)
 ###
 # plt.legend(bbox_to_anchor=(0.90,0.75),loc="upper left",borderaxespad=0.)
-print(y)
 plt.ylim(-2, 2)
 plt.axis('off')
 # plt.savefig("P2_signalbruit.pdf")

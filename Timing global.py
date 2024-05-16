@@ -1,22 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import Signal_carré
 osc1 = Signal_carré.y
 
-import signal_emetteur
+from Utilisé import signal_emetteur, signal_crete, signal_comparateur, signal_interrupteur
+
 osc2 = signal_emetteur.y
 
-import signal_recepteur
 filtre = signal_recepteur.y
 
-import signal_crete
 crete = signal_crete.y
 
-import signal_interrupteur
 interrupteur = signal_interrupteur.y
 
-import signal_comparateur
 comparateur = signal_comparateur.y
 
 import signal_monostableA
@@ -25,7 +21,6 @@ monostable_A = signal_monostableA.y
 import signal_integrateur
 integrateur = signal_integrateur.y
 
-import signal_comparateur
 comparateur = signal_comparateur.y
 
 

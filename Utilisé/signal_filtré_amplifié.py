@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import signal_emetteur as osc2
+from Utilisé import signal_emetteur as osc2
+
 principal = osc2.offsetted
 recu = principal+np.array([*principal[-100:],*principal[:900]])*2/3 + np.array([*principal[-285:],*principal[:715]])*2/5
 
@@ -23,5 +24,5 @@ plt.axis('off')
 # plt.xlabel('Temps (s)')
 # plt.ylabel('Amplitude')
 # plt.grid(True)
-# plt.savefig("Démo_signalrecepteur.pdf")
+# plt.savefig("Démo_signal_filtré_amplifié.pdf")
 plt.show()
