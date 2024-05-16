@@ -25,9 +25,9 @@ while i < 1000 :
 x = np.linspace(0, 10, 1001)
 # print(y)
 plt.plot(x, [0, *y])
-plt.ylim(0, 2)
+plt.ylim(-0.1, 1.1)
 plt.axis('off')
-# plt.savefig("P2_signalcarre1.pdf")
+# plt.savefig("Demo_signal_osc1.pdf")
 plt.show()
 
 

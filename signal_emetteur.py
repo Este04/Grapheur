@@ -39,18 +39,17 @@ while i < 1000 :
         y[i::] = 0
         break
     i += int((1 - rapport_cyclique) * T)
-# offsetted = np.array([y[i] - max(y)/2 if i%len(pr<len(y)/2 else y[i] for i in range(len(y))])
-offsetted = np.array(y.copy())
 
+offsetted = np.array(y.copy())
 for i in range(len(offsetted)):
     if (i%T)/T < rapport_cyclique :
         offsetted[i] -= max(offsetted)/2
 x = np.linspace(0, 10, 1001)
 # plt.plot(x, [0, *y])
-plt.plot(x, [0, *offsetted])
+plt.plot(x, [0, *y])
 plt.axis('off')
-plt.ylim(-1, 1)
-# plt.savefig("P1_signalemetteurvf.pdf")
+plt.ylim(0, 1.2)
+# plt.savefig("Demo_signal_emetteur.pdf")
 plt.show()
 
 
