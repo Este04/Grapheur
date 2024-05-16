@@ -23,7 +23,7 @@ while i < 1000 :
 
 
 x = np.linspace(0, 10, 1001)
-# print(y)
+print(y[84:86])
 plt.plot(x, [0, *y])
 plt.ylim(-0.1, 1.1)
 plt.axis('off')
