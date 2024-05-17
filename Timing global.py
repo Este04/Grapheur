@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 from Utilisé import signal_osc1, signal_emetteur, signal_filtré_amplifié, signal_crete, signal_comparateur, signal_interrupteur, signal_bascule, signal_monostable_B, signal_monostable_A, signal_integrateur, signal_décideur, signal_SH
 
+T = 2
+
 osc1 = signal_osc1.y * 30 - 15
 osc2 = signal_emetteur.y * 30 - 15
 filtred_amplified = signal_filtré_amplifié.y * 15
@@ -13,12 +15,13 @@ interrupteur = signal_interrupteur.y * 15
 
 monostable_A = signal_monostable_A.y * 15
 integrateur = signal_integrateur.y * 12
+Vseuil = np.full(len(integrateur)+1, integrateur[88])
 decideur = signal_décideur.y * 15
 bascule = signal_bascule.y * 15
 monostable_B = signal_monostable_B.y * 15
 SH = signal_SH.y * 12
 
-x = np.linspace(0, 10, 1001)
+x = np.linspace(0, 2*T, 1001)
 
 f, axs = plt.subplots(6, 2)
 plt.subplots_adjust(hspace=0)
@@ -31,15 +34,21 @@ axs[5][0].plot(x, [0, *interrupteur], linewidth=0.8)
 
 axs[0][1].plot(x, [0, *monostable_A], linewidth=0.8)
 axs[1][1].plot(x, [0, *integrateur], linewidth=0.8)
+axs[1][1].plot(x, Vseuil, linestyle='--', linewidth=0.8)
 axs[2][1].plot(x, [0, *decideur], linewidth=0.8)
 axs[3][1].plot(x, [0, *bascule], linewidth=0.8)
 axs[4][1].plot(x, [0, *monostable_B], linewidth=0.8)
 axs[5][1].plot(x, [0, *SH], linewidth=0.8)
 axs[5][1].set_ylim((-0.5, 12))
 
+
+axs[1][1].vlines(x=[T/6, 7*T/6], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
+axs[5][1].vlines(x=[T*142/500, T*648/500], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
+
 for i in range(5):
     axs[i][0].set_xticks([])
     axs[i][1].set_xticks([])
 
+# plt.text(x=T, y = 0, s="CHANGE PERIOD!")
 plt.savefig("TOUT.pdf")
 plt.show()
