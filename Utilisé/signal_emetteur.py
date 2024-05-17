@@ -44,12 +44,14 @@ offsetted = np.array(y.copy())
 for i in range(len(offsetted)):
     if (i%T)/T < rapport_cyclique :
         offsetted[i] -= max(offsetted)/2
-x = np.linspace(0, 10, 1001)
-# plt.plot(x, [0, *y])
-plt.plot(x, [0, *y])
-plt.axis('off')
-plt.ylim(0, 1.2)
-# plt.savefig("Demo_signal_emetteur.pdf")
-# plt.show()
 
+def plot(y, save=False):
+    x = np.linspace(0, 10, 1001)
+    plt.plot(x, [0, *y])
+    plt.axis('off')
+    plt.ylim(0, 1.2)
+    if save: plt.savefig("Demo_signal_emetteur.pdf")
+    plt.show()
+
+# plot(y)
 

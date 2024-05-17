@@ -22,12 +22,13 @@ while i < 1000 :
     i += int((1 - rapport_cyclique) * T)
 
 
-x = np.linspace(0, 10, 1001)
-print(y[84:86])
-plt.plot(x, [0, *y])
-plt.ylim(-0.1, 1.1)
-plt.axis('off')
-# plt.savefig("Demo_signal_osc1.pdf")
-# plt.show()
+def plot(y, save=False):
+    x = np.linspace(0, 10, 1001)
+    print(y[84:86])
+    plt.plot(x, [0, *y])
+    plt.ylim(-0.1, 1.1)
+    plt.axis('off')
+    if save: plt.savefig("Demo_signal_osc1.pdf")
+    plt.show()
 
-
+# plot(y)

@@ -13,16 +13,20 @@ y = np.zeros_like(principal)
 # Génération du bruit blanc gaussien
 bruit = np.random.normal(0, 0.01, nombre_échantillons)
 y = recu+1.5*bruit
-# Temps
-temps = np.arange(nombre_échantillons) / fréquence_échantillonnage
 
-# Tracé du signal de bruit
-plt.figure(figsize=(20, 10))
-plt.plot(temps, y)
-plt.axis('off')
-# plt.title('Signal de bruit électrique')
-# plt.xlabel('Temps (s)')
-# plt.ylabel('Amplitude')
-# plt.grid(True)
-# plt.savefig("Demo_signal_filtré_amplifié.pdf")
-# plt.show()
+
+def plot(y, save=False):
+    # Temps
+    temps = np.arange(nombre_échantillons) / fréquence_échantillonnage
+    # Tracé du signal de bruit
+    plt.figure(figsize=(20, 10))
+    plt.plot(temps, y)
+    plt.axis('off')
+    # plt.title('Signal de bruit électrique')
+    # plt.xlabel('Temps (s)')
+    # plt.ylabel('Amplitude')
+    # plt.grid(True)
+    if save: plt.savefig("Demo_signal_filtré_amplifié.pdf")
+    plt.show()
+
+# plot(y)
