@@ -3,42 +3,30 @@ import matplotlib.pyplot as plt
 
 
 def bascule() :
-    filename = ""
+    filename = "mesures_Bascule"
 
-    file_location = filename + ".csv"
-    data = np.loadtxt(file_location, delimiter=";", skiprows=1)
+    file_location = "Data/Bascule.txt"
+    data = np.loadtxt(file_location, delimiter="\t", skiprows=1)
 
-    x = data[:, 1]
-    y1 = data[:, 0]
-    
-    plt.plot(x, y1, label="Tension mesurée [V]", color="b")
-    plt.plot(x, droite, label="Régression linéaire", color="g", linestyle="--")
+    t = data[:, 0] * 1000
+    V1 = data[:, 1]
+    V2 = data[:, 2]
 
-    print(np.array(x, dtype=int))
 
-    col_labels = ["Dist", "V"]
-    table_vals = np.array([x, y1]).T
-    print(table_vals)
-    print([table_vals[:, 0].tolist(), table_vals[:, 1].tolist()])
-    the_table = plt.table(cellText=[[int(x[i]), y1[i]] for i in range(16)],
-                          colWidths=[0.062, 0.08],
-                          colLabels=col_labels,
-                          loc='lower right')
+    # plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 6))
+    plt.plot(t, V2, label="$V_{interrupteur}$ [V]", color="r")
 
-    # Texte sur le graphe :
-    # plt.text(12,2,'Table Title',size=8)
+    plt.plot(t, V1, label="$V_{bascule}$ [V]", color="b")
+    plt.grid(True)
 
-    # Espace entre lex axes (fraction de la taille totale)
-    # f.subplots_adjust(hspace=0)
-
-    theorie = x * 2 / 100 / 344 * 961
-    plt.plot(x, theorie, label="Tension théorique [V]", color="r", linestyle="--")
-
-    plt.xlabel("Distance [cm]")
+    plt.xlabel("Temps [ms]")
     plt.ylabel("Tension [V]")
-    plt.title("Tension en fonction de la distance")
-    plt.legend(loc="upper left")
-    # plt.xlim(0, 4)
-    plt.ylim(0)
-    # plt.savefig(filename + '.pdf')
+    # plt.title("Tension en fonction de la distance")
+    plt.legend(loc=(1.05, 0.85))
+
+    plt.tight_layout()
+    plt.savefig(filename + '.pdf')
     plt.show()
+
+bascule()
