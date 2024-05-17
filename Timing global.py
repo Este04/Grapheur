@@ -35,9 +35,9 @@ axs[2][1].plot(x, [0, *decideur], linewidth=0.8)
 axs[3][1].plot(x, [0, *bascule], linewidth=0.8)
 axs[4][1].plot(x, [0, *monostable_B], linewidth=0.8)
 axs[5][1].plot(x, [0, *SH], linewidth=0.8)
-axs[5][1].set_ylim((0, 12))
+axs[5][1].set_ylim((-0.5, 12))
 
-for i in np.arange(5):
+for i in range(5):
     axs[i][0].set_xticks([])
     axs[i][1].set_xticks([])
 
