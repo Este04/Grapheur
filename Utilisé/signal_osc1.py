@@ -28,6 +28,6 @@ plt.plot(x, [0, *y])
 plt.ylim(-0.1, 1.1)
 plt.axis('off')
 # plt.savefig("Demo_signal_osc1.pdf")
-plt.show()
+# plt.show()
 
 

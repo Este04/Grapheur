@@ -50,6 +50,6 @@ plt.plot(x, [0, *y])
 plt.axis('off')
 plt.ylim(0, 1.2)
 # plt.savefig("Demo_signal_emetteur.pdf")
-plt.show()
+# plt.show()
 
 

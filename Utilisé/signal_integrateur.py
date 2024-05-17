@@ -13,4 +13,4 @@ plt.plot(x, np.array([*y, 0]))
 plt.axis('off')
 
 # plt.savefig("Demo_integrateur.pdf")
-plt.show()
+# plt.show()
