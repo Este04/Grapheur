@@ -26,26 +26,55 @@ SH = signal_SH.y * 12
 x = np.linspace(0, 2 * T, 1001)
 
 f, axs = plt.subplots(6, 2)
-plt.subplots_adjust(hspace=0)
+plt.subplots_adjust(hspace=0, wspace=0.4)
+
+# === Colonne 1 ===
 axs[0][0].plot(x, [0, *osc1], linewidth=0.8)
+axs[0][0].set_ylabel('Oscillateur 1', fontsize=6)
+
 axs[1][0].plot(x, [0, *osc2], linewidth=0.8)
+axs[1][0].set_ylabel('Oscillateur 2', fontsize=6)
+
 axs[2][0].plot(x, [0, *filtred_amplified], linewidth=0.8)
+axs[2][0].set_ylabel('Filtre', fontsize=6)
+
 axs[3][0].plot(x, [0, *crete], linewidth=0.8)
 axs[3][0].plot(x, Vref, linewidth=0.8, linestyle='--')
-axs[4][0].plot(x, [0, *comparateur], linewidth=0.8)
-axs[5][0].plot(x, [0, *interrupteur], linewidth=0.8)
+axs[3][0].set_yticks([0,Vref[0],5])
+axs[3][0].set_yticklabels([0,'Vref\n',5])
+axs[3][0].set_ylabel('Crète', fontsize=6)
 
+axs[4][0].plot(x, [0, *comparateur], linewidth=0.8)
+axs[4][0].set_ylabel('Comparateur', fontsize=6)
+
+axs[5][0].plot(x, [0, *interrupteur], linewidth=0.8)
+axs[5][0].set_ylabel('Interrupteur', fontsize=6)
+
+# === Colonne 2 ===
 axs[0][1].plot(x, [0, *monostable_A], linewidth=0.8)
+axs[0][1].set_ylabel('Monostable A', fontsize=6)
+
 axs[1][1].plot(x, [0, *integrateur], linewidth=0.8)
 axs[1][1].plot(x, Vseuil, linestyle='--', linewidth=0.8)
+axs[1][1].vlines(x=[T / 6, 7 * T / 6], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
+axs[1][1].set_yticks([0,Vseuil[0], 10])
+axs[1][1].set_yticklabels([0,'Vref\n', 10])
+axs[1][1].set_ylabel('Intégrateur', fontsize=6)
+
 axs[2][1].plot(x, [0, *decideur], linewidth=0.8)
+axs[2][1].set_ylabel('Décideur', fontsize=6)
+
 axs[3][1].plot(x, [0, *bascule], linewidth=0.8)
+axs[3][1].set_ylabel('Bascule', fontsize=6)
+
 axs[4][1].plot(x, [0, *monostable_B], linewidth=0.8)
+axs[4][1].set_ylabel('Monostable B', fontsize=6)
+
 axs[5][1].plot(x, [0, *SH], linewidth=0.8)
 axs[5][1].set_ylim((-0.5, 12))
-
-axs[1][1].vlines(x=[T / 6, 7 * T / 6], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
 axs[5][1].vlines(x=[T * 142 / 500, T * 648 / 500], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
+axs[5][1].set_ylabel('S/H', fontsize=6)
+
 
 for i in range(5):
     axs[i][0].set_xticks([])
