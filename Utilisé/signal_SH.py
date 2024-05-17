@@ -1,11 +1,12 @@
 import numpy as np
 import matplotlib . pyplot as plt
+from Utilisé import signal_integrateur
 
 y = [*np.zeros(101), *np.ones(1000-101)]
-print(len(y))
-integrateur = np.linspace(0, 1, int(500*5/6))
+integrateur = signal_integrateur.y
 
-y = [*y[:101], *integrateur[101:101+20], *np.ones(1000-101-20)*integrateur[120]]
+y = np.array([*y[:101], *integrateur[101:101+20], *np.ones(1000-101-20)*integrateur[120]])
+np.put(y, range(500+101,500+101+20), integrateur[500+101:500+101+20])
 
 
 def plot(y, save=False):
