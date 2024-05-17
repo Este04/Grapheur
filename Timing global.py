@@ -40,5 +40,6 @@ axs[5][1].set_ylim((0, 12))
 for i in np.arange(5):
     axs[i][0].set_xticks([])
     axs[i][1].set_xticks([])
-# plt.savefig("TOUT.pdf")
+
+plt.savefig("TOUT.pdf")
 plt.show()

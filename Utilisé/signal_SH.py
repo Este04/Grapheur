@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib . pyplot as plt
 from Utilisé import signal_integrateur
 
-y = [*np.zeros(101), *np.ones(1000-101)]
+y = [*np.zeros(142), *np.ones(1000-142)]
 integrateur = signal_integrateur.y
 
-y = np.array([*y[:101], *integrateur[101:101+20], *np.ones(1000-101-20)*integrateur[120]])
-np.put(y, range(500+101,500+101+20), integrateur[500+101:500+101+20])
+y = np.array([*y[:142], *integrateur[142:142+20], *np.ones(1000-142-20)*integrateur[161]])
+np.put(y, range(500+142,500+142+20), integrateur[500+142:500+142+20])
 
 
 def plot(y, save=False):
@@ -17,4 +17,4 @@ def plot(y, save=False):
     if save: plt.savefig("Demo_signal_SH.pdf")
     plt.show()
 
-# plot(y)
+# plot(y,0)

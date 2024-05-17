@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from Utilisé import signal_emetteur as osc2
 
 principal = osc2.offsetted
-recu = principal+np.array([*principal[-100:],*principal[:900]])*2/3 + np.array([*principal[-285:],*principal[:715]])*2/5
+recu = principal+np.array([*principal[-142:],*principal[:858]])*2/3 + np.array([*principal[-285:],*principal[:715]])*2/5
 
 # Paramètres du signal de bruit
 durée = 1.0  # Durée du signal en secondes
@@ -29,4 +29,4 @@ def plot(y, save=False):
     if save: plt.savefig("Demo_signal_filtré_amplifié.pdf")
     plt.show()
 
-# plot(y)
+# plot(y,0)

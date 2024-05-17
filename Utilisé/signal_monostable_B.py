@@ -5,7 +5,7 @@ y = np.zeros(1000)
 T = 510
 
 for i in range (0, 2, 1) :
-    y[i*T + 101 : int(i*T + 121)] = np.ones(20)
+    y[i*T + 142 : int(i*T + 162)] = np.ones(20)
 
 
 def plot(y, save=False):
@@ -16,4 +16,4 @@ def plot(y, save=False):
     if save: plt.savefig("Demo_signal_monostable_B.pdf")
     plt.show()
 
-# plot(y)
+# plot(y,0)
