@@ -36,10 +36,10 @@ def simu_oscillateur1() :
     file_location = "Data/Oscillateur1.txt"
     data = np.loadtxt(file_location, delimiter="\t", skiprows=1)
 
-    t =  data[:400, 0] * 1000
-    V1 = data[:400, 1]
-    Vo = data[:400, 2]
-    V2 = data[:400, 3]
+    t =  data[:275, 0] * 1000
+    V1 = data[:275, 1]
+    Vo = data[:275, 2]
+    V2 = data[:275, 3]
 
     plt.figure(figsize=(10, 6))
     plt.plot(t, V2, label="$V_{in_+}$ [V]", color="g")
@@ -50,7 +50,7 @@ def simu_oscillateur1() :
     plt.xlabel("Temps [ms]")
     plt.ylabel("Tension [V]")
     # plt.title("Tension en fonction de la distance")
-    plt.legend(loc='upper right')
+    plt.legend(loc='upper right', fontsize=20)
 
     plt.tight_layout()
     # plt.savefig(filename + '.pdf')
@@ -63,10 +63,11 @@ def simu_oscillateur2() :
     file_location = "Data/Oscillateur2.txt"
     data = np.loadtxt(file_location, delimiter="\t", skiprows=1)
 
-    t =  data[:, 0] * 1000
-    V1 = data[:, 1]
-    V2 = data[:, 2]
+    t =  data[96:4585, 0] * 1000
+    V1 = data[96:4585, 1]
+    V2 = data[96:4585, 2]
 
+    t -= t[0]
     # plt.figure(figsize=(10, 6))
     plt.figure(figsize=(20, 6))
     plt.plot(t, V2, label="$V_{oscillateur_1}$ [V]", color="b")
@@ -77,10 +78,10 @@ def simu_oscillateur2() :
     plt.xlabel("Temps [ms]")
     plt.ylabel("Tension [V]")
     # plt.title("Tension en fonction de la distance")
-    plt.legend(loc=(1.05, 0.85))
+    plt.legend(loc='upper right', fontsize=20)
 
     plt.tight_layout()
-    plt.savefig(filename + '.pdf')
+    # plt.savefig(filename + '.pdf')
     plt.show()
 
 
@@ -175,9 +176,35 @@ def mesures_monostableA():
     # plt.savefig(filename + '.pdf')
     plt.show()
 
+def mesures_oscillateur1() :
+    filename = "mesures_oscillateur1"
+
+    file_location1 = "Data/mesures_osc1&VplusmonoA.csv"
+    data1 = np.loadtxt(file_location1, delimiter=",", skiprows=8)
+
+    t =  data1[960:4000, 1]
+    V1 = data1[960:4000, 2]
+
+    t = (t - t[0]) * 1000
+
+    plt.figure(figsize=(10, 6))
+    # plt.figure(figsize=(20, 6))
+    plt.plot(t, V1, label="$V_{oscillateur_1}$ [V]", color="b")
+    plt.grid(True)
+
+    plt.xlabel("Temps [ms]")
+    plt.ylabel("Tension [V]")
+    # plt.title("Tension en fonction de la distance")
+    plt.legend(loc='upper right')
+
+    plt.tight_layout()
+    # plt.savefig(filename + '.pdf')
+    plt.show()
+
 # simu_bascule()
 # simu_oscillateur1()
 # simu_oscillateur2()
-# simu_integrateur()
+simu_integrateur()
 # mesures_integrateur()
-mesures_monostableA()
+# mesures_monostableA()
+# mesures_oscillateur1()
