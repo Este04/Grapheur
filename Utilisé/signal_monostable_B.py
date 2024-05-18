@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib . pyplot as plt
 
 y = np.zeros(1000)
-T = 510
+T = 500
 
 for i in range (0, 2, 1) :
     y[i*T + 142 : int(i*T + 162)] = np.ones(20)
