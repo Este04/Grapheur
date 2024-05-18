@@ -53,5 +53,5 @@ def plot(y, save=False):
     if save: plt.savefig("Demo_signal_emetteur.pdf")
     plt.show()
 
-# plot(y)
+# plot(y,0)
 
