@@ -41,7 +41,7 @@ axs[2][0].set_ylabel('Filtre', fontsize=6)
 axs[3][0].plot(x, [0, *crete], linewidth=0.8)
 axs[3][0].plot(x, Vref, linewidth=0.8, linestyle='--', color='orange')
 axs[3][0].set_yticks([0,Vref[0],5])
-axs[3][0].set_yticklabels([0,'Vref\n',5])
+axs[3][0].set_yticklabels([0,r'$V_{\text{ref}}$'+'\n',5])
 axs[3][0].set_ylabel('Crête', fontsize=6)
 
 axs[4][0].plot(x, [0, *comparateur], linewidth=0.8)
@@ -58,7 +58,7 @@ axs[1][1].plot(x, [0, *integrateur], linewidth=0.8)
 axs[1][1].plot(x, Vseuil, linestyle='--', linewidth=0.8, color='orange')
 axs[1][1].vlines(x=[T / 6, 7 * T / 6], ymin=-1, ymax=15, linestyle='--', linewidth=0.8, color='r')
 axs[1][1].set_yticks([0,Vseuil[0], 10])
-axs[1][1].set_yticklabels([0,'Vref\n', 10])
+axs[1][1].set_yticklabels([0,r'$V_{\text{ref}}$'+'\n', 10])
 axs[1][1].set_ylabel('Intégrateur', fontsize=6)
 
 axs[2][1].plot(x, [0, *decideur], linewidth=0.8)
@@ -76,9 +76,12 @@ axs[5][1].vlines(x=[T * 142 / 500, T * 648 / 500], ymin=-1, ymax=15, linestyle='
 axs[5][1].set_ylabel('S/H', fontsize=6)
 
 
-for i in range(5):
-    axs[i][0].set_xticks([])
-    axs[i][1].set_xticks([])
+for i in range(6):
+    if i!=5:
+        axs[i][0].set_xticks([])
+        axs[i][1].set_xticks([])
+    for j in range(2):
+        axs[i][j].yaxis.set_label_coords(-0.2, 0.5)
 
 # plt.text(x=T, y = 0, s="CHANGE PERIOD!")
 plt.savefig("TOUT.pdf")
