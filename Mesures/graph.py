@@ -33,7 +33,7 @@ def simu_bascule() :
 def simu_oscillateur1() :
     filename = "simu_oscillateur1"
 
-    file_location = "Data/Oscillateur_1.txt"
+    file_location = "Data/Oscillateur1.txt"
     data = np.loadtxt(file_location, delimiter="\t", skiprows=1)
 
     t =  data[:400, 0] * 1000
@@ -50,10 +50,10 @@ def simu_oscillateur1() :
     plt.xlabel("Temps [ms]")
     plt.ylabel("Tension [V]")
     # plt.title("Tension en fonction de la distance")
-    plt.legend(loc=(1.05, 0.85))
+    plt.legend(loc='upper right')
 
     plt.tight_layout()
-    # plt.savefig(filename + '.pdf')
+    plt.savefig(filename + '.pdf')
     plt.show()
 
 
@@ -83,6 +83,35 @@ def simu_oscillateur2() :
     plt.savefig(filename + '.pdf')
     plt.show()
 
+
+def simu_integrateur():
+    filename = "simu_integrateur"
+
+    file_location = "Data/Integrateur.txt"
+    data = np.loadtxt(file_location, delimiter="\t", skiprows=1)
+
+    t =  data[600:, 0] * 1000
+    V1 = data[600:, 1]
+    V2 = data[600:, 2]
+
+    plt.figure(figsize=(15, 6))
+    # plt.figure(figsize=(20, 6))
+    plt.plot(t, V1, label="$V_{contrôle}$ [V]", color="b")
+    plt.plot(t, V2, label="$V_{intégrateur}$ [V]", color="r")
+
+    plt.grid(True)
+
+    plt.xlabel("Temps [ms]")
+    plt.ylabel("Tension [V]")
+    # plt.title("Tension en fonction de la distance")
+    plt.legend(loc='upper left')
+
+    plt.tight_layout()
+    plt.savefig(filename + '.pdf')
+    plt.show()
+
+
 # simu_bascule()
-# simu_oscillateur1()
-simu_oscillateur2()
+simu_oscillateur1()
+# simu_oscillateur2()
+# simu_integrateur()
