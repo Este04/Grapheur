@@ -8,7 +8,7 @@ from Utilisé import signal_osc1, signal_emetteur, signal_filtré_amplifié, sig
 T = 2
 
 osc1 = signal_osc1.y * 30 - 15
-osc2 = signal_emetteur.y * 30 - 15
+osc2 = signal_emetteur.y * 15
 filtred_amplified = signal_filtré_amplifié.y * 15
 crete = signal_crete.y * 7.5
 Vref = np.full(len(crete) + 1, 1)
