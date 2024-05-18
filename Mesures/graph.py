@@ -53,7 +53,7 @@ def simu_oscillateur1() :
     plt.legend(loc='upper right')
 
     plt.tight_layout()
-    plt.savefig(filename + '.pdf')
+    # plt.savefig(filename + '.pdf')
     plt.show()
 
 
@@ -94,6 +94,8 @@ def simu_integrateur():
     V1 = data[600:, 1]
     V2 = data[600:, 2]
 
+    t -= t[0]
+
     plt.figure(figsize=(15, 6))
     # plt.figure(figsize=(20, 6))
     plt.plot(t, V1, label="$V_{contrôle}$ [V]", color="b")
@@ -107,11 +109,71 @@ def simu_integrateur():
     plt.legend(loc='upper left')
 
     plt.tight_layout()
-    plt.savefig(filename + '.pdf')
+    # plt.savefig(filename + '.pdf')
     plt.show()
 
 
+def mesures_integrateur() :
+    filename = "mesures_integrateur"
+
+    file_location1 = "Data/I_4ms_5v.csv"
+    data1 = np.loadtxt(file_location1, delimiter=",", skiprows=8)
+    file_location2 = "Data/M1_4ms_5v.csv"
+    data2 = np.loadtxt(file_location2, delimiter=",", skiprows=8)
+
+    t =  data1[175:4750, 1]
+    V1 = data1[175:4750, 2]
+    V2 = data2[175:4750, 2]
+
+    t = (t - t[0]) * 1000
+
+    plt.figure(figsize=(10, 6))
+    # plt.figure(figsize=(20, 6))
+    plt.plot(t, V2, label="$V_{monostable\ A}$ [V]", color="b")
+
+    plt.plot(t, V1, label="$V_{integrateur}$ [V]", color="r")
+    plt.grid(True)
+
+    plt.xlabel("Temps [ms]")
+    plt.ylabel("Tension [V]")
+    # plt.title("Tension en fonction de la distance")
+    plt.legend(loc='upper left')
+
+    plt.tight_layout()
+    plt.savefig(filename + '.pdf')
+    plt.show()
+
+def mesures_monostableA():
+    filename = "mesures_integrateur"
+
+    file_location = "Data/M1E_4ms_3v.csv"
+    data = np.loadtxt(file_location, delimiter=",", skiprows=8)
+
+    t =  data[:, 1]
+    V1 = data[:, 2]
+    V2 = data[:, 2]
+
+    # t = (t - t[0]) * 1000
+
+    plt.figure(figsize=(10, 6))
+    # plt.figure(figsize=(20, 6))
+    plt.plot(t, V2, label="$V_{monostable\ A}$ [V]", color="b")
+
+    plt.plot(t, V1, label="$V_{integrateur}$ [V]", color="r")
+    plt.grid(True)
+
+    plt.xlabel("Temps [ms]")
+    plt.ylabel("Tension [V]")
+    # plt.title("Tension en fonction de la distance")
+    plt.legend(loc='upper left')
+
+    plt.tight_layout()
+    # plt.savefig(filename + '.pdf')
+    plt.show()
+
 # simu_bascule()
-simu_oscillateur1()
+# simu_oscillateur1()
 # simu_oscillateur2()
 # simu_integrateur()
+# mesures_integrateur()
+mesures_monostableA()
