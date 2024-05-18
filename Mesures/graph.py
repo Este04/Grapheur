@@ -144,22 +144,26 @@ def mesures_integrateur() :
     plt.show()
 
 def mesures_monostableA():
-    filename = "mesures_integrateur"
+    filename = "mesures_monostableA"
 
-    file_location = "Data/M1E_4ms_3v.csv"
-    data = np.loadtxt(file_location, delimiter=",", skiprows=8)
+    file_location1 = "Data/mesures_monoA.csv"
+    data1 = np.loadtxt(file_location1, delimiter=",", skiprows=8)
+    file_location2 = "Data/mesures_osc1&VplusmonoA.csv"
+    data2 = np.loadtxt(file_location2, delimiter=",", skiprows=8)
 
-    t =  data[:, 1]
-    V1 = data[:, 2]
-    V2 = data[:, 2]
+    t =  data1[1090:5665, 1]
+    V1 = data1[1090:5665, 2]
+    V2 = data1[1090:5665, 3]
+    V3 = data2[1090:5665, 3]
 
-    # t = (t - t[0]) * 1000
+    t = (t - t[0]) * 1000
 
     plt.figure(figsize=(10, 6))
     # plt.figure(figsize=(20, 6))
-    plt.plot(t, V2, label="$V_{monostable\ A}$ [V]", color="b")
+    plt.plot(t, V2, label="$V_{in_+}$ [V]", color="b")
 
-    plt.plot(t, V1, label="$V_{integrateur}$ [V]", color="r")
+    plt.plot(t, V1, label="$V_{monostable\ A}$ [V]", color="r")
+    plt.plot(t, V3, label="$V_{seuil}$ [V]", color="g")
     plt.grid(True)
 
     plt.xlabel("Temps [ms]")
