@@ -15,12 +15,11 @@ droite = np.polyval(fit, x)
 plt.plot(x, y1, label="Tension mesurée [V]", color="b")
 plt.plot(x, droite, label="Régression linéaire", color="g", linestyle="--")
 
-print(np.array(x, dtype=int))
+print(fit)
 
 col_labels = ["Dist", "V"]
 table_vals = np.array([x, y1]).T
-print(table_vals)
-print([table_vals[:, 0].tolist(), table_vals[:, 1].tolist()])
+
 the_table = plt.table(cellText=[[int(x[i]), y1[i]] for i in range(16)],
                       colWidths=[0.062, 0.08],
                       colLabels=col_labels,
@@ -41,5 +40,5 @@ plt.title("Tension en fonction de la distance")
 plt.legend(loc="upper left")
 # plt.xlim(0, 4)
 plt.ylim(0)
-# plt.savefig(filename + '.pdf')
+plt.savefig(filename + '.pdf')
 plt.show()
